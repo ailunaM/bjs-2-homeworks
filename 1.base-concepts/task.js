@@ -10,12 +10,21 @@ function solveEquation(a, b, c) {
     arr.push(root);
     return arr;
   } else if (discriminantFormula > 0) {
-    const roott = Math.round((-b + Math.sqrt(b)) / (2 * a));
-    const root = Math.round((-b - Math.sqrt(b)) / (2 * a));
-    arr.push(roott);
+    const root = Math.round((-b + Math.sqrt(b)) / (2 * a));
+    const rootTwo = Math.round((-b - Math.sqrt(b)) / (2 * a));
     arr.push(root);
+    arr.push(rootTwo);
     return arr;
   }
 }
 
-function calculateTotalMortgage(percent, contribution, amount, countMonths) {}
+function calculateTotalMortgage(percent, contribution, amount, countMonths) {
+  let S = amount - contribution;
+  let n = countMonths;
+  let P = percent / 100 / n;
+
+  let payment = S * (P + P / (Math.pow(1 + P, n) - 1));
+  let totalAmount = payment * n;
+
+  return +parseFloat(totalAmount).toFixed(2);
+}
