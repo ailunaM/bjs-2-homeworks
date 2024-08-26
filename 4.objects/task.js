@@ -7,7 +7,7 @@ function Student(name, gender, age) {
 new Student()
 
 Student.prototype.setSubject = function (subjectName) {
-  
+  this.subject = subjectName;
 }
 
 Student.prototype.addMarks = function (...marks) {
