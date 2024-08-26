@@ -4,20 +4,18 @@ function Student(name, gender, age) {
   this.age = age;
   this.marks = [];
 }
-new Student()
+new Student();
 
 Student.prototype.setSubject = function (subjectName) {
   this.subject = subjectName;
-}
+};
 
 Student.prototype.addMarks = function (...marks) {
-  
-}
+  if (this.marks) {
+    this.marks = [...this.marks, ...marks];
+  }
+};
 
-Student.prototype.getAverage = function () {
-  
-}
+Student.prototype.getAverage = function () {};
 
-Student.prototype.exclude = function (reason) {
-  
-}
+Student.prototype.exclude = function (reason) {};
