@@ -42,7 +42,7 @@ class Book extends PrintEditionItem {
 }
 class NovelBook extends Book {
   constructor(name, releaseDate, pagesCount) {
-    super(name, releaseDate, pagesCount, );
+    super(name, releaseDate, pagesCount);
 
     this.type = 'novel';
   }
@@ -59,5 +59,34 @@ class DetectiveBook extends Book {
     super(name, releaseDate, pagesCount, author);
 
     this.type = 'detective';
+  }
+}
+
+class Library {
+  constructor(name) {
+    this.name = name;
+    this.books = [];
+  }
+
+  addBook(book) {
+    if (book.state > 30) {
+      this.books.push(book);
+    }
+  }
+  findBookBy(type, value) {
+    const result = this.books.find((book) => {
+      if (book[type] === value) {
+        return book;
+      }
+    });
+    return result || null;
+  }
+  giveBookByName(bookName) {
+    const result = this.books.findIndex((book) => book.name === bookName);
+
+    if (result !== -1) {
+      return this.books.pop(result);
+    }
+    return null;
   }
 }
