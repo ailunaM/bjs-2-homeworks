@@ -90,3 +90,41 @@ class Library {
     return null;
   }
 }
+
+class Student {
+  constructor(name) {
+    this.name = name;
+    this.marks = {};
+  }
+
+  addMark(mark, subject) {
+    // debugger;
+    if (mark > 1 && mark < 6) {
+      if (!this.marks[subject]) {
+        this.marks[subject] = [];
+      }
+      this.marks[subject].push(mark);
+    }
+  }
+  getAverageBySubject(subject) {
+    if (!this.marks[subject]) {
+      return 0;
+    }
+
+    let sum = this.marks[subject].reduce((acc, mark) => {
+      return (acc += mark);
+    }, 0);
+    return sum / this.marks[subject].length;
+  }
+
+  getAverage() {
+    let subjects = Object.keys(this.marks);
+    let result = subjects.reduce((acc, subject) => {
+      return (acc += this.getAverageBySubject(subject));
+    }, 0);
+    if(!subjects.length){
+      return 0;
+    }
+    return result / subjects.length;
+  }
+}
