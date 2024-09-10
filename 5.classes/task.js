@@ -122,7 +122,7 @@ class Student {
     let result = subjects.reduce((acc, subject) => {
       return (acc += this.getAverageBySubject(subject));
     }, 0);
-    if(!subjects.length){
+    if (!subjects.length) {
       return 0;
     }
     return result / subjects.length;
