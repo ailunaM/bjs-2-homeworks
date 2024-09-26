@@ -4,7 +4,6 @@ class AlarmClock {
     this.intervalId = null;
   }
 
-  // 14:50
   addClock(time, callback) {
     if (!time || !callback) {
       throw new Error('Отсутствуют обязательные аргументы');
